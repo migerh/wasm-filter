@@ -1,6 +1,6 @@
-# filter
+# wasm-filter
 
-A simple example that shows how to pass image data to wasm and back to js and render it in a canvas
+A simple example that shows how to pass image data to wasm and back to js and render it in a canvas.
 
 
 ## build
@@ -18,8 +18,15 @@ $ s2wasm filter.s -o filter.wast
 $ wasm-as filter.wast
 ```
 
-The `-o` parameter defines the output. `-S` tells clang to only run preprocessing and compilation steps but no linking. `-Os` is the optimization flag (makes the generated wasm smaller) and `--std=c11` defines the C standard used.
+The `-o` parameter defines the output. `-S` tells clang to only run preprocessing and compilation steps but no linking. `-Os` is the optimization flag (makes the generated wasm smaller) and `--std=c11` defines the C standard used. `s2wasm` transforms LLVM output to WebAssembly's wast format, which is turned into the binary wasm format with `wasm-as`.
 
 ## run
 
-Just run a local webserver (e.g. `$ pushstate-server .`) and open `filter.html` in one of the [browsers that support wasm](http://caniuse.com/#search=webassembly).
+Just run a local webserver, e.g.
+
+```
+$ npm install -g pushstate-server
+$ pushstate-server .
+```
+
+and open `filter.html` in one of the [browsers that support wasm](http://caniuse.com/#search=webassembly).
