@@ -79,23 +79,10 @@ function filterWasm(imageData) {
     bufferIn.set(data);
     wasmModule.outline_c(bufferPointerIn, bufferPointerOut, width, height);
     data.set(bufferOut);
-    //wasmModule.threshold_c(bufferPointerOut, bufferPointerIn, width, height, 40);
-    //data.set(bufferIn);
     return data;
 }
 
-let numberOfDrawsInLastSecond = 0,
-    lastTimeStamp = 0,
-    output = document.querySelector(`#fps`);
 function filter(imageData) {
-    const currentTime = new Date().getTime();
-    if (currentTime - lastTimeStamp > 1000) {
-        lastTimeStamp = new Date().getTime();
-        output.innerHTML = `fps: ${numberOfDrawsInLastSecond}`;
-        numberOfDrawsInLastSecond = 0;
-    }
-    numberOfDrawsInLastSecond++;
-
     if (!wasmModule) {
         return outlineJs(imageData);
     }
