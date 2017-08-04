@@ -25,7 +25,7 @@ unsigned char clamp(int value, int scale)
     return (unsigned char)(value);
 }
 
-void applyKernel(unsigned char* buffer_in, unsigned char* buffer_out, int x, int y, unsigned int width, unsigned int height, int kernel[10])
+void applyKernel(unsigned char* buffer_in, unsigned char* buffer_out, int x, int y, unsigned int width, unsigned int height, const int kernel[10])
 {
     int sum = 0;
     int kernelIndex = 0;
