@@ -97,6 +97,7 @@ function filter(imageData) {
     numberOfDrawsInLastSecond++;
 
     if (!wasmModule) {
+        console.log('js');
         return outlineJs(imageData);
     }
 
@@ -136,7 +137,7 @@ async function main() {
 
     video.setAttribute(`width`, 640);
     video.setAttribute(`height`, 480);
-    video.setAttribute(`src`, URL.createObjectURL(stream));
+    video.srcObject = stream;
     video.play();
 
     const image = document.querySelector('#image');
